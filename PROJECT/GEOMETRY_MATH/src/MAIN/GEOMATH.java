@@ -146,7 +146,7 @@ public class GEOMATH
 
 		}
 
-		public static class PIRAMID
+		public static class PYRAMID
 		{
 
 			public static double VOLUME(double BASE_AREA, double HEIGHT)
@@ -172,7 +172,7 @@ public class GEOMATH
 				return VALUE;
 			}
 
-			public static double TOTAL_SRUF_AREA(double R, double HEIGHT)
+			public static double TOTAL_SURF_AREA(double R, double HEIGHT)
 			{
 				double VALUE = CURVED_SURF_AREA(R, HEIGHT) + CIRCLE.AREA(R);
 				return VALUE;
