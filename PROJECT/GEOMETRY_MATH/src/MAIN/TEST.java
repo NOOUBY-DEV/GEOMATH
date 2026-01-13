@@ -21,6 +21,7 @@ public class TEST
 		ANS.add(RHS.PYTH_THM(3.0, 4.0, null));
 		ANS.add(CUBE.TOTAL_SURF_AREA(9));
 		ANS.add(GEOMATH.IN_PI(false, CONE.VOLUME(9, 27)));
+		// TODO : TEST ALL CLASSES ;
 
 		ANS.forEach(System.out::println);
 
