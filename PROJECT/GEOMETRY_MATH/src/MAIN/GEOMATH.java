@@ -1,8 +1,10 @@
 package MAIN; // CHANGE THIS PACKAGE NAME TO YOURS PLS
 
+
 import MAIN.GEOMATH.G2D.CIRCLE;
 import MAIN.GEOMATH.G2D.RHS;
 import MAIN.GEOMATH.G2D.SQUARE;
+
 
 public class GEOMATH
 {
@@ -214,7 +216,8 @@ public class GEOMATH
 				return VALUE;
 			}
 
-			public static double AREA(double R) {
+			public static double AREA(double R)
+			{
 				double VALUE = 4 * R * R * PI;
 				return VALUE;
 			}
@@ -233,6 +236,29 @@ public class GEOMATH
 
 		}
 
+	}
+
+	public static class POWER_RATIO
+	{
+
+		public static double CONVERT(int LHS_POWER, double LEFT_Y, int RHS_POWER, double RIGHT_X, double RIGHT_Y)
+		{
+
+			double VALUE = 0;
+
+			VALUE = (Math.pow(RIGHT_X, RHS_POWER) * LEFT_Y) / Math.pow(RIGHT_Y, RHS_POWER);
+			VALUE = ROOT_N(VALUE, LHS_POWER);
+
+			return VALUE;
+		}
+
+	}
+
+	
+	public static double ROOT_N(double BASE, int N)
+	{
+		double VALUE = Math.pow(BASE, (1.0 / N));
+		return VALUE;
 	}
 
 }
