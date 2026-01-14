@@ -241,7 +241,7 @@ public class GEOMATH
 	public static class POWER_RATIO
 	{
 
-		public static double CONVERT(int LHS_POWER, double LEFT_Y, int RHS_POWER, double RIGHT_X, double RIGHT_Y)
+		public static double SCALE_FOR_UNKNOWN(int LHS_POWER, double LEFT_Y, int RHS_POWER, double RIGHT_X, double RIGHT_Y)
 		{
 
 			double VALUE = 0;
