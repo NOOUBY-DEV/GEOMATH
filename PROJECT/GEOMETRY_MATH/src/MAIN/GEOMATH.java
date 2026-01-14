@@ -2,6 +2,7 @@ package MAIN; // CHANGE THIS PACKAGE NAME TO YOURS PLS
 
 import MAIN.GEOMATH.G2D.CIRCLE;
 import MAIN.GEOMATH.G2D.RHS;
+import MAIN.GEOMATH.G2D.SQUARE;
 
 public class GEOMATH
 {
@@ -43,6 +44,18 @@ public class GEOMATH
 				return PERIMETER;
 			}
 
+			public static double RADIUS_FROM_AREA(double AREA)
+			{
+				double VALUE = Math.sqrt(AREA / PI);
+				return VALUE;
+			}
+
+			public static double RADIUS_FROM_PERIMETER(double PERIMETER)
+			{
+				double VALUE = (PERIMETER / (2 * PI));
+				return VALUE;
+			}
+
 			public static class ARC
 			{
 				public static double LENGTH(double R, double DEGREES)
@@ -55,6 +68,12 @@ public class GEOMATH
 				{
 					double LENGTH = CIRCLE.AREA(R) * (DEGREES / 360);
 					return LENGTH;
+				}
+
+				public static double DEGREES(double ARC_LENGTH, double CIRCLE_PERIMETER)
+				{
+					double VALUE = (ARC_LENGTH / CIRCLE_PERIMETER) * 360;
+					return VALUE;
 				}
 			}
 
@@ -115,21 +134,15 @@ public class GEOMATH
 				return VALUE;
 			}
 
-			public static double SIDE_AREA(double LENGTH)
-			{
-				double VALUE = LENGTH * LENGTH;
-				return VALUE;
-			}
-
 			public static double TOTAL_SURF_AREA(double LENGTH)
 			{
-				double VALUE = SIDE_AREA(LENGTH) * 6;
+				double VALUE = SQUARE.AREA(LENGTH) * 6;
 				return VALUE;
 			}
 
 		}
 
-		public static class RECT
+		public static class RECT_3D
 		{
 
 			public static double VOLUME(double LENGTH, double WIDTH, double HEIGHT)
@@ -146,12 +159,24 @@ public class GEOMATH
 
 		}
 
-		public static class PYRAMID
+		public static class SQ_PYRAMID
 		{
 
 			public static double VOLUME(double BASE_AREA, double HEIGHT)
 			{
 				double VALUE = BASE_AREA * HEIGHT / 3;
+				return VALUE;
+			}
+
+			public static double TOTAL_SURF_AREA(double SQ_SIDE_LENGTH, double HEIGHT)
+			{
+				double VALUE = SQUARE.AREA(SQ_SIDE_LENGTH) + LATERAL_AREA(SQ_SIDE_LENGTH, HEIGHT);
+				return VALUE;
+			}
+
+			public static double LATERAL_AREA(double SQ_SIDE_LENGTH, double HEIGHT)
+			{
+				double VALUE = 2 * SQ_SIDE_LENGTH * RHS.PYTH_THM(SQ_SIDE_LENGTH / 2, HEIGHT, null);
 				return VALUE;
 			}
 
@@ -180,19 +205,34 @@ public class GEOMATH
 
 		}
 
-	}
-
-
-	public static Object IN_PI(boolean STRING, double INPUT)
-	{
-		Object VALUE = INPUT / PI;
-
-		if (STRING)
+		public static class SPHERE
 		{
-			VALUE = String.valueOf(VALUE) + " PI";
+
+			public static double VOLUME(double R)
+			{
+				double VALUE = (4 * R * R * R * PI) / 3;
+				return VALUE;
+			}
+
+			public static double AREA(double R) {
+				double VALUE = 4 * R * R * PI;
+				return VALUE;
+			}
+
+			public static double RADIUS_FROM_VOLUME(double VOLUME)
+			{
+				double VALUE = Math.cbrt((VOLUME * 3) / (4 * PI));
+				return VALUE;
+			}
+
+			public static double RADIUS_FROM_AREA(double AREA)
+			{
+				double VALUE = Math.sqrt(AREA / (4 * PI));
+				return VALUE;
+			}
+
 		}
 
-		return VALUE;
 	}
 
 }

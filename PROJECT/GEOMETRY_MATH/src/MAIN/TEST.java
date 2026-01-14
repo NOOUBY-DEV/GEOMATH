@@ -1,34 +1,76 @@
 package MAIN;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import MAIN.GEOMATH.G2D.CIRCLE;
 import MAIN.GEOMATH.G2D.RHS;
+import MAIN.GEOMATH.G2D.SQUARE;
+import MAIN.GEOMATH.G2D.TRIANGLE;
 import MAIN.GEOMATH.G3D.CONE;
 import MAIN.GEOMATH.G3D.CUBE;
+import MAIN.GEOMATH.G3D.RECT_3D;
+import MAIN.GEOMATH.G3D.SPHERE;
+import MAIN.GEOMATH.G3D.SQ_PYRAMID;
 
 public class TEST
 {
-	public static List<Object> ANS = new ArrayList<>();
+
+	public static Map<Object, Object> FORMULA_VALUE = new HashMap<>();
 
 
 	public static void main(String[] args)
 	{
-		ANS.add(CIRCLE.AREA(9.0));
-		ANS.add(CIRCLE.PERIMETER(9.0));
-		ANS.add(CIRCLE.ARC.LENGTH(9.0, 90.0));
-		ANS.add(RHS.PYTH_THM(3.0, 4.0, null));
-		ANS.add(CUBE.TOTAL_SURF_AREA(9));
-		ANS.add(GEOMATH.IN_PI(false, CONE.VOLUME(9, 27)));
-		// TODO : TEST ALL CLASSES ;
+		ADD(CIRCLE.AREA(9), 254);
+		ADD(CIRCLE.PERIMETER(9), 56);
+		ADD(CIRCLE.RADIUS_FROM_AREA(CIRCLE.AREA(9)), 9);
+		ADD(CIRCLE.RADIUS_FROM_PERIMETER(CIRCLE.PERIMETER(9)), 9);
 
-		ANS.forEach(System.out::println);
+		ADD(CIRCLE.ARC.LENGTH(9, 90), 14);
+		ADD(CIRCLE.ARC.AREA(9, 90), 63);
+		ADD(CIRCLE.ARC.DEGREES(1, 4), 90);
+
+		ADD(RHS.PYTH_THM(3.0, 4.0, null), 5);
+
+		ADD(SQUARE.AREA(9), 81);
+		ADD(SQUARE.SIDE(81), 9);
+
+		ADD(TRIANGLE.ALTITUDE(9, 90), 20);
+		ADD(TRIANGLE.AREA(9, 20), 90);
+
+
+		ADD(CUBE.TOTAL_SURF_AREA(9), 486);
+		ADD(CUBE.VOLUME(9), 729);
+
+		ADD(RECT_3D.VOLUME(9, 9, 10), 810);
+		ADD(RECT_3D.TOTAL_SURF_AREA(9, 9, 10), 522);
+
+		ADD(SQ_PYRAMID.VOLUME(81, 9), 243);
+		ADD(SQ_PYRAMID.TOTAL_SURF_AREA(9, 9), 262);
+		ADD(SQ_PYRAMID.LATERAL_AREA(9, 9), 181);
+
+		ADD(CONE.VOLUME(9, 9), 763);
+		ADD(CONE.CURVED_SURF_AREA(9, 9), 359);
+		ADD(CONE.TOTAL_SURF_AREA(9, 9), 614);
+		
+		ADD(SPHERE.AREA(9), 1017);
+		ADD(SPHERE.VOLUME(9), 3053);
+		ADD(SPHERE.RADIUS_FROM_AREA(SPHERE.AREA(9)), 9);
+		ADD(SPHERE.RADIUS_FROM_VOLUME(SPHERE.VOLUME(9)), 9);
+
+
+
+		PRINT_ANS_VALUE();
 
 	}
 
-	public static void println(Object X)
+	public static void ADD(Object FORMULA, Object ANS)
 	{
-		System.out.println(X);
+		FORMULA_VALUE.put(FORMULA, ANS);
+	}
+
+	public static void PRINT_ANS_VALUE()
+	{
+		FORMULA_VALUE.forEach((key, value) -> System.out.println("FORMULA_ANS: " + key + " , ANS: " + value));
 	}
 }
