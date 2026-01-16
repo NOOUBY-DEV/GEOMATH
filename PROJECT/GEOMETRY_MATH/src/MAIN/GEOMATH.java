@@ -161,6 +161,29 @@ public class GEOMATH
 
 		}
 
+		public static class PRISM
+		{
+
+			public static double VOLUME(double BASE_AREA, double HEIGHT)
+			{
+				double VALUE = BASE_AREA * HEIGHT;
+				return VALUE;
+			}
+
+			public static double TOTAL_SURF_AREA(double BASE_AREA, double PERIMETER, double HEIGHT)
+			{
+				double VALUEE = SIDE_AREA(PERIMETER, HEIGHT) + (2 * BASE_AREA);
+				return VALUEE;
+			}
+
+			public static double SIDE_AREA(double PERIMETER, double HEIGHT)
+			{
+				double VALUE = PERIMETER * HEIGHT;
+				return VALUE;
+			}
+
+		}
+
 		public static class SQ_PYRAMID
 		{
 
@@ -207,6 +230,29 @@ public class GEOMATH
 
 		}
 
+		public static class CYLINDER
+		{
+
+			public static double VOLUME(double R, double HEIGHT)
+			{
+				double VALUE = CIRCLE.AREA(R) * HEIGHT;
+				return VALUE;
+			}
+
+			public static double TOTAL_SURF_AREA(double R, double HEIGHT)
+			{
+				double VALUE = (2 * CIRCLE.AREA(R)) + CYLINDER.CURVED_SURF_AREA(R, HEIGHT);
+				return VALUE;
+			}
+
+			public static double CURVED_SURF_AREA(double R, double HEIGHT)
+			{
+				double VALUE = CIRCLE.PERIMETER(R) * HEIGHT;
+				return VALUE;
+			}
+
+		}
+
 		public static class SPHERE
 		{
 
@@ -241,7 +287,8 @@ public class GEOMATH
 	public static class POWER_RATIO
 	{
 
-		public static double SCALE_FOR_UNKNOWN(int LHS_POWER, double LEFT_Y, int RHS_POWER, double RIGHT_X, double RIGHT_Y)
+		public static double SCALE_FOR_UNKNOWN(int LHS_POWER, double LEFT_Y, int RHS_POWER, double RIGHT_X,
+				double RIGHT_Y)
 		{
 
 			double VALUE = 0;
@@ -254,7 +301,7 @@ public class GEOMATH
 
 	}
 
-	
+
 	public static double ROOT_N(double BASE, int N)
 	{
 		double VALUE = Math.pow(BASE, (1.0 / N));
